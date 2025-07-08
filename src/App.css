@@ -1,0 +1,247 @@
+/* === Base Reset === */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.5s ease;
+}
+
+/* === Backgrounds === */
+body.dark {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: white;
+  animation: bgPulse 10s ease-in-out infinite;
+}
+
+body.light {
+  background: linear-gradient(135deg, #a8edea, #fed6e3);
+  color: #222;
+}
+
+@keyframes bgPulse {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.25); }
+}
+
+/* === App Wrapper === */
+.app-wrapper {
+  width: 100vw;
+  height: 100vh;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* === Main Container === */
+.app-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  animation: floatGlow 6s infinite ease-in-out;
+}
+
+body.dark .app-container {
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 30px #9d00ff88;
+}
+
+body.light .app-container {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 40px #00f0ff88, 0 0 80px #c0f0ff55;
+}
+
+@keyframes floatGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(157, 0, 255, 0.4), 0 0 40px rgba(157, 0, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(157, 0, 255, 0.8), 0 0 80px rgba(157, 0, 255, 0.4);
+  }
+}
+
+/* === Title === */
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #9d00ff, #ffffff);
+  -webkit-background-clip: text;
+  text-shadow: 0 0 8px rgba(157, 0, 255, 0.6);
+}
+
+/* === Toggle Button === */
+.toggle-mode {
+  margin-bottom: 15px;
+  background: transparent;
+  border: 1px solid currentColor;
+  color: inherit;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 0 10px rgba(157, 0, 255, 0.4);
+}
+
+.toggle-mode:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(157, 0, 255, 0.8);
+}
+
+/* === OCR Form === */
+.ocr-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === File Input === */
+.ocr-container input[type="file"] {
+  margin: 20px 0;
+}
+
+/* === Buttons === */
+.ocr-container button,
+.action-buttons button,
+.reset-btn {
+  background: #9d00ff;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border-radius: 10px;
+  color: yellow;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(157, 0, 255, 0.5);
+}
+
+.ocr-container button:hover,
+.action-buttons button:hover,
+.reset-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(157, 0, 255, 0.8);
+}
+
+body.light .ocr-container button,
+body.light .action-buttons button,
+body.light .reset-btn {
+  background: #00bfff;
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+}
+
+/* === Reset Button Pulse === */
+.reset-btn {
+  background: #ff0055;
+  animation: pulseReset 2s infinite;
+}
+
+@keyframes pulseReset {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 85, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(255, 0, 85, 1); }
+}
+
+body.light .reset-btn {
+  background: #ff5e78;
+  box-shadow: 0 0 10px rgba(255, 94, 120, 0.5);
+}
+
+/* === Text Preview === */
+.text-preview {
+  width: 100%;
+  min-height: 100px;
+  max-height: 200px;
+  background: #1e1e2f;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  resize: none;
+  margin-top: 10px;
+  overflow-y: auto;
+  transition: background 0.3s ease;
+}
+
+body.light .text-preview {
+  background: #f0f0f0;
+  color: #222;
+}
+
+body.light .text-preview::placeholder {
+  color: #888;
+}
+
+/* === Camera Preview === */
+.camera-box {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.camera-preview {
+  width: 100%;
+  max-height: 300px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 2px solid white;
+}
+
+/* === Image Preview (if added) === */
+.preview img {
+  max-width: 100%;
+  max-height: 250px;
+  margin: 10px 0;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(157, 0, 255, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.preview img:hover {
+  transform: scale(1.02);
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 20px;
+  }
+
+  .ocr-container button,
+  .action-buttons button,
+  .reset-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .text-preview {
+    max-height: 150px;
+  }
+}

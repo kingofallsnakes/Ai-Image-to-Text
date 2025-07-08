@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Camera</title>
+  <style>
+    body {
+      background: #0f0f1c;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-family: sans-serif;
+    }
+    video, canvas {
+      width: 90%;
+      max-width: 500px;
+      margin: 20px auto;
+      border-radius: 12px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      background-color: #8e2de2;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #4a00e0;
+    }
+  </style>
+</head>
+<body>
+  <h2>📷 Camera Preview</h2>
+  <video id="video" autoplay playsinline></video>
+  <br>
+  <button onclick="capture()">📸 Capture</button>
+  <button onclick="upload()">📤 Upload</button>
+  <canvas id="canvas" style="display:none;"></canvas>
+
+<script>
+  const video = document.getElementById('video');
+  const canvas = document.getElementById('canvas');
+
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+      video.srcObject = stream;
+    });
+
+  function capture() {
+    const ctx = canvas.getContext('2d');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    canvas.style.display = 'block';
+  }
+
+  function upload() {
+    const dataUrl = canvas.toDataURL('image/jpeg');
+
+    window.opener.postMessage(
+      { type: 'captured-image', image: dataUrl },
+      "*" 
+    );
+
+    window.close();
+  }
+</script>
+
+</body>
+</html>
