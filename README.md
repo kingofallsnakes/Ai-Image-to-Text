@@ -16,11 +16,27 @@ An advanced, stylish, and fully functional React + Vite-based web app that extra
 
 ---
 ## 🚀 Live Preview
-
+[AI-IMAGE-TO-TEXT](https://ai-image-to-text.vercel.app/)
 ---
 ## 📷 Screenshots
 
----
+----
+
+<img width="578" height="613" alt="Image" src="https://github.com/user-attachments/assets/a689a827-bd19-44b5-ab64-3ab44c2b72bf" />
+
+----
+
+<img width="598" height="625" alt="Image" src="https://github.com/user-attachments/assets/57c1423b-1a52-4baa-8cd9-db3f31272a8b" />
+
+----
+
+<img width="1363" height="741" alt="Image" src="https://github.com/user-attachments/assets/fd05d8ee-c906-4457-8a52-0a2832808e67" />
+
+----
+
+<img width="590" height="145" alt="Image" src="https://github.com/user-attachments/assets/502f417f-019a-4bae-9923-651adca2e25a" />
+
+----
 
 ## 🛠️ Tech Stack
 
